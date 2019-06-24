@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import os
-
+from flask import Flask, render_template
 from peewee import *
 
 database = MySQLDatabase(os.environ['MYSQL_DATABASE'], 
@@ -20,6 +20,12 @@ class Table(BaseModel):
     created_at = DateTimeField()
     updated_at = DateTimeField(null=True)                              
         
+app = Flask(__name__)
 
+@app.route("/")
+def hello():
+    return "Hello"
+    
 if __name__ == '__main__':
     with database: database.create_tables([Table]) 
+    app.run(debug = True)
