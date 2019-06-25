@@ -29,6 +29,7 @@ services:
 
     python:
         build: .        
+        image: tiangolo/uwsgi-nginx-flask:python3.7
         container_name: app-python      
         command: python app.py
         restart: always        
