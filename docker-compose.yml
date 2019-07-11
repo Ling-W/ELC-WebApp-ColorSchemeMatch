@@ -32,6 +32,8 @@ services:
         image: tiangolo/uwsgi-nginx-flask:python3.7
         container_name: app-python      
         command: python app.py
+        ports:
+           - "5555:9999"
         restart: always        
         working_dir: /app
         volumes:
