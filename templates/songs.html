@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>Songs</h1>
+  
+    <form action="/result" methods = 'GET'>
+    <select name="songs[]" multiple>
+        {% for song in songs %}
+
+            <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li>
+        {% endfor %}
+    </select>
+    <input type="submit" value = "submit">
+    </form>
+    
+    <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+    
+ 
+
+{% endblock %}
