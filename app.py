@@ -5,13 +5,13 @@ from flask import Flask, render_template, request, redirect, url_for
 #from flask_mysqldb import MySQL
 from peewee import *
 from wtforms import Form, StringField , TextAreaField ,PasswordField , validators
-
+import logging
 database = MySQLDatabase(os.environ['MYSQL_DATABASE'], 
                             host=os.environ['MYSQL_HOST'], 
                             port=int(os.environ['MYSQL_PORT']),
                             user=os.environ['MYSQL_USER'], 
                             password=os.environ['MYSQL_PASSWORD'])
-
+import sys
 # app.config['MYSQL_HOST'] = 'localhost'
 # app.config['MYSQL_USER'] = 'root'
 # app.config['MYSQL_PASSWORD'] = 'root'
@@ -40,12 +40,42 @@ class Song:
         self.name  = name
         self.link = link
 
+class Note:
+    def __init__(self, id, name, img):
+        self.id = id
+        self.name  = name
+        self.img = img
+
+
 #Mock dataset of songs
 songs = []
-for i in range(15):
+for i in range(9):
     song = Song(i, "song_{}".format(i),"https://soundcloud.com/bluewednesday/sink-or-swim-feat-dj-quads")
     songs.append(song)
 
+
+note_lst = ['CITRUS',
+'FLORAL',
+'FOUGERE',
+'GREEN',
+'LEATHER',
+'MUSK',
+'ORIENTAL',
+'TOBACCO',
+'WOODS']
+notes = []
+notes_dict = {}
+for i, n in enumerate(note_lst):
+    note = Note(i, n,'https://www.google.com/search?q=citrus&source=lnms&tbm=isch&sa=X&ved=0ahUKEwijufrcvtHjAhVkTt8KHR1UC9MQ_AUIESgB&cshid=1564106619008256&biw=1680&bih=939#imgrc=D6mKxRRc4-Rz1M:' )
+    notes.append(note)
+    notes_dict[i] = n
+    
+genre = ['Country','Jazz','Ambient', 'Acoustic', 'Disco','Hip-hop', 'rap','Heavy Metal', 'Classical']
+genre = dict(enumerate(genre))
+
+song_notes = dict(zip([song.id for song in songs],notes))
+
+notes_genre = dict(zip(notes, genre))
 @app.route("/")
 def hello():
     
@@ -69,51 +99,52 @@ def song(id):
     for song in songs:
         if song.id == id:
             return redirect(song.link)
-    return 
+    return "Song not found!"
 
 
-
-@app.route("/select", methods = ['GET','POST'])
-def select():
-    if request.method == 'POST':
-        first_song = request.args.get('songs')
-        # first_song = request.form['first']
-        # second_song = request.form['second']
-        # third_song = request.form['third']
-      
-        
-    return redirect('/result/'+first_song + '/' + second_song + '/' + third_song)
-
-@app.route("/result", methods = ['POST', 'GET'])
+@app.route("/songs", methods = ['POST', 'GET'])
 def select_song():
     if request.method == 'GET':
-        result = request.args.getlist('songs[]')
+        songs = request.args.getlist('songs[]')
+        url = "/notes/{}/{}/{}".format(songs[0],songs[1],songs[2])
+        return redirect(url)
       
-        # first_song = result[0]
-        # second_song = request.args.get('songs')[1]
-        # third_song = request.args.get('songs')[2]
-        return 'This the selected song' + result[0] + result[1] + result[2]
-        #else:
-            #return "You must select 3 songs!"
+       
     else:
         '''
         #get to the fragrance.
         return redirect('fragrance')
         '''
-        return 'The result is.'
+        return render_template("recommendaton.html",fragrance = fragrance)
 
 
-@app.route('/fragrance/<string:id>')
-def fragrance(id):
-    '''
-    cur = database.connection.cursor()
+@app.route("/notes/<int:song1>/<int:song2>/<int:song3>")
+def get_notes(song1,song2,song3):
+    if request.method =='GET':
+        note1 = song_notes[int(song1)]
+        note2 = song_notes[int(song2)]
+        note3 = song_notes[int(song3)]
+        return render_template("album.html", note1 = note1, note2 = note2, note3 = note3)
 
-    result = cur.excecute()  
 
-    fragrance = cur.fetchone()
-    return render_template('recommendation.html'), fragrance = fragrance)
-    '''
-    return 'This is the recommendation' + id
+@app.route("/fragrance/<int:note1>/<int:note2>/<int:note3>")
+def direct_fragrance(note1,note2,note3):
+    base_url = 'https://www.tomford.com/beauty/fragrance/'
+    selection = '#prefn1=fragrancenotes&prefn2=productType&prefv1={}%7C{}%7C{}&prefv2=FRAGRANCE'.format(
+        notes_dict[note1], notes_dict[note2], notes_dict[note3])
+    return redirect(base_url + selection)
+
+# @app.route('/fragrance/<string:id>')
+# def fragrance(id):
+#     '''
+#     cur = database.connection.cursor()
+
+#     result = cur.excecute()  
+
+#     fragrance = cur.fetchone()
+#     return render_template('recommendation.html'), fragrance = fragrance)
+#     '''
+#     return 'This is the recommendation' + id
 
 #song form class
 '''

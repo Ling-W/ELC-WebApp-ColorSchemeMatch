@@ -3,7 +3,7 @@
 {% block body %}
   <h1>Songs</h1>
   
-    <form action="/result" methods = 'GET'>
+    <form action="/songs" methods = 'GET'>
     <select name="songs[]" multiple>
         {% for song in songs %}
 
