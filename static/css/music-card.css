@@ -1,0 +1,237 @@
+@import 'https://fonts.googleapis.com/css?family=Reem+Kufi';
+@import 'https://fonts.googleapis.com/css?family=Pacifico&display=swap';
+    
+@import url('https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css');
+
+
+body {
+  background: #8e9eab;
+  background: linear-gradient(to left, #8e9eab , #eef2f3);
+}
+
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.music-card {
+  /*background: #fff;*/
+    background: #000;
+  box-shadow: 9px 7px 37px -6px rgba(0,0,0,0.75);
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+  height: 500px;
+  /*float: right;*/
+    display:inline-block;
+  flex-wrap: wrap;
+  flex: auto;
+  margin: 25px 25px; 
+  transition: width 1s, height 1s; 
+}
+
+.music-card:hover{
+    width: 310px;
+    height: 500px;
+    z-index: auto;
+    
+}
+
+.button{
+    position:absolute;
+    bottom: 0%;
+    left: 20%;
+    right:20%;
+    
+    
+}
+
+
+.image {
+  background: url('https://t2.genius.com/unsafe/440x440/https%3A%2F%2Fimages.genius.com%2F58a07fb743226031d3ccf6dc472cccdf.991x991x1.jpg') no-repeat 75%;
+  background-size: cover;  
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  height: 300px;
+  width: 300px;
+  transition: width 1s height 1s; 
+}
+
+.image:hover{
+    width: 310px;
+    height: 301px; 
+}
+
+
+
+.image:after {
+  height: 100px;
+  content: '';
+  top: 200px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(rgba(9, 2, 4, 0), #444);
+  
+}
+
+.wave {
+  position: absolute;
+  height: 750px;
+  width: 750px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -70%;
+  margin-top: -130%;
+  background: radial-gradient(#353535, #383737);
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 10px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 3000ms infinite linear;
+}
+/* when stop */
+.wave {
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 4000ms;
+}
+/* when stop */
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 5000ms;
+}
+/* when stop */
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+
+.info {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.4em;
+  font-weight: 400;
+  /*color: #ff0000;*/
+    color: #FFD700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-family: 'Arial';
+}
+
+.artist {
+  color: #cfcfcf;
+  font-size: 1.2em;
+  letter-spacing: 0.08em;
+  font-family: 'Reem Kufi', sans-serif;
+}
+.fa {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+.fa-play {
+  display: none;
+}
+
+
+
+
+
+/* Customize the label (the container) */
+.containers {
+  display: block;
+  position: relative;
+  bottom: -460px;
+  left: 260px;
+  /*padding-left: 35px;
+  margin-bottom: 12px;*/
+  cursor: pointer;
+  /*font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: width 2s, height 2s; 
+}
+
+/* Hide the browser's default checkbox */
+.containers input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containers:hover input ~ .checkmark {
+  background-color: #ccc;
+  height: 30px;
+  width: 30px; 
+}
+
+/* When the checkbox is checked, add a blue background */
+.containers input:checked ~ .checkmark {
+  background-color: #2196F3;
+    height: 30px;
+  width: 30px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containers input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containers .checkmark:after {
+  left: 10px;
+  top: 7px;
+  width: 7px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
