@@ -111,7 +111,7 @@ def category():
 def perfume():
     global category 
     category = 0
-    return redirect('https://www.tomford.com/black-orchid/T0-BLACK-ORCHID.html')
+    return render_template('songs.html', songs = songs)
 
 @app.route("/song/<int:id>")
 def song(id):
@@ -132,7 +132,7 @@ def select_song():
             if str(song.id) in request.args:
                 result += [str(song.id)]
         url = "/notes/{}/{}/{}".format(result[0],result[1],result[2])
-        return redirect(url)
+        return redirect(url)       
 
       
        
@@ -160,24 +160,7 @@ def direct_fragrance(note1,note2,note3):
         notes_dict[note1], notes_dict[note2], notes_dict[note3])
     return redirect(base_url + selection)
 
-# @app.route('/fragrance/<string:id>')
-# def fragrance(id):
-#     '''
-#     cur = database.connection.cursor()
 
-#     result = cur.excecute()  
-
-#     fragrance = cur.fetchone()
-#     return render_template('recommendation.html'), fragrance = fragrance)
-#     '''
-#     return 'This is the recommendation' + id
-
-#song form class
-'''
-class SongForm(Form):
-    title = StringField('Title',[validators.Length(min=1,max=50)])
-    body = TextAreaField('Body',[validators.Length(min=30,max=1000)])
-'''
 
 
 
