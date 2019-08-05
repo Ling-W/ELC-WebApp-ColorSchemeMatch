@@ -78,32 +78,40 @@ genre = dict(enumerate(genre))
 song_notes = dict(zip([song.id for song in songs],notes))
 
 notes_genre = dict(zip(notes, genre))
+
+#All Fragrance
+class Fragrance:
+    def __init__(self, id, category, name, link):
+        self.id = id
+        self.category = category
+        self.name = name
+        self.link = link
+
+
+
+fragrance = {}
+
+#add fragrance
+#0 perfume, 1 cologne, 2 unisex
+fragrance[0] = Fragrance(0, 0,'Black Orchid', 'https://www.tomford.com/black-orchid/T0-BLACK-ORCHID.html')
+#TODO: Add all the fragrances here
+
+category = 0
 @app.route("/")
 def hello():
     
-    
-    '''
-    #cursor = database.excecute()
-    #results = cur.excecute("SELECT * FROM songs")
-    #songs = cur.fetchall()
-    if result > 0:
-        return render_template('index.html',songs = songs)
-    else:
-        msg = 'no songs found!'
-        return render_template('index.html', msg = msg)
-    cur.close()
-    '''
-    return render_template('songs.html', songs = songs)
-    #return render_template('category.html')
+    #return render_template('songs.html', songs = songs)
+    return render_template('category.html')
     
 @app.route("/category")
 def category():
-    if request.method == 'GET':
-        return ''
+    return render_template('category.html')
 
-    else:
-        return render_template('category.html')
-
+@app.route("/perfume")
+def perfume():
+    global category 
+    category = 0
+    return redirect('https://www.tomford.com/black-orchid/T0-BLACK-ORCHID.html')
 
 @app.route("/song/<int:id>")
 def song(id):
