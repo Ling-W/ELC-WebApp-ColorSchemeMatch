@@ -1,31 +1,3 @@
-<!--{% extends 'base.html' %}
-
-{% block body %}
-  <h1>Songs</h1>
-  
-    <form action="/songs" methods = 'GET'>
-    <select name="songs[]" multiple>
-        {% for song in songs %}
-
-            <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li>
-        {% endfor %}
-    </select>
-    <input type="submit" value = "submit">
-    </form>
-
-
-    <head> 
-        <link rel = "music-card" href="music-card.css">
-    
-    </head>
-    
-    <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-    
- 
-
-{% endblock %}-->
-
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -39,339 +11,100 @@
         
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
         
-    <!-- Bootstrap core CSS -->
-        <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-            
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
         
-        </style>
-    <!-- Custom styles for this template -->
-        <link href="album.css" rel="stylesheet">
-    </head>
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     
-    <body>
-        <header>
-            <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-md-7 py-4">
-                            <h4 class="text-white">{{note1.name}}</h4>
-                            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-                        </div>
+    </style>
+  <link href="album.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white"></h4>
+                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="navbar navbar-dark bg-dark shadow-sm">
-                <div class="container d-flex justify-content-between">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
-                            <span style='font-size:30px;'>&#9835;</span>
-                        </svg>
-                        <strong>TomFord Beauty</strong>
-                    </a>
-                </div>
-            </div>
-        </header>
+        </div>
         
-        <main role="main">
-            <section class="jumbotron text-center">
-                <div class="container">
-                    <h1 class="jumbotron-heading">WELCOME! </h1>
-                    <p class="lead text-muted">Select your 3 favorite songs and hit submit for your fragrance recommendations.</p>
-                    <p>
-                        <a href="/fragrance/{{note1.id}}/{{note2.id}}/{{note3.id}}" class="btn btn-primary my-2">View Recommendation Result</a>
-                    </p>
-                </div>
-            </section>
-            
-            <!--MUSIC CARD -->
-            
-            <head>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
+                        <span style='font-size:30px;'>&#9835;</span>
+                    </svg>
+                    <strong>TomFord Beauty</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">WELCOME! </h1>
+                <p class="lead text-muted">Select your 3 favorite songs and hit submit for your fragrance recommendations.</p>
+              
+            </div>
+        </section>
+        
+     
+        <head>
                 <link href="/static/css/music-card.css" rel = "stylesheet">
-            </head>
-            
-            <form>
-                <div class="music-card playing" id="card">
-                    <div class="image" id="image"></div>
-                    <div class="wave" id="wave1"></div>
-                    <div class="wave" id="wave2"></div>
-                    <div class="wave" id="wave3"></div>
-                    <div class="info" id="info">
-                        <h2 class="title" id="title">Change</h2>
-                        <div class="artist" id="artist">Maxo Cream</div>
-                    </div>
-                    <label class="containers" id="containers">
-                        <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                        <span class="checkmark"></span>
-                    </label>
+        </head>
+    <form action="/songs" methods = 'GET'>
+    <select name="songs[]" multiple>
+
+        {% for song in songs %}
+        <div class="music-card playing">
+            <div class="image" style="background: url('https://upload.wikimedia.org/wikipedia/en/5/50/Eminem_Rap_God.png')" >
                 </div>
-            
-            
-            <div class="music-card playing">
-                <div class="image" style="background: url('https://upload.wikimedia.org/wikipedia/en/5/50/Eminem_Rap_God.png')" >
-                    </div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Rap God</h2>
-                    <div class="artist">Eminem</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="info">
+                <h2 class="title">{{ song.name }}</h2>
+                <div class="artist">Eminem</div>
             </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Moment of Clarity</h2>
-                    <div class="artist">Jay-Z</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">So Appalled</h2>
-                    <div class="artist">Kanye West</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Evolution of a Man</h2>
-                    <div class="artist">Brian McKnight</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-             <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Change</h2>
-                    <div class="artist">Maxo Cream</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">So Appalled</h2>
-                    <div class="artist">Kanye West</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Evolution of a Man</h2>
-                    <div class="artist">Brian McKnight</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-             <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Change</h2>
-                    <div class="artist">Maxo Cream</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">So Appalled</h2>
-                    <div class="artist">Kanye West</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Evolution of a Man</h2>
-                    <div class="artist">Brian McKnight</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-             <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Change</h2>
-                    <div class="artist">Maxo Cream</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">So Appalled</h2>
-                    <div class="artist">Kanye West</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-            <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Evolution of a Man</h2>
-                    <div class="artist">Brian McKnight</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            
-             <div class="music-card playing">
-                <div class="image"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="wave"></div>
-                <div class="info">
-                    <h2 class="title">Change</h2>
-                    <div class="artist">Maxo Cream</div>
-                </div>
-                <label class="containers">
-                    <input type="checkbox" name="musicSelect" onclick="return validateMusicSelection();">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-        
-            </form>
-            
-        </main>
-        
-        
-        
-        <script src="sweetalert2.all.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        
-        
-        <script type="text/javascript">
-            function validateMusicSelection(){
-                var checkboxes = document.getElementsByName("musicSelect");
-                
-                var checkedMusic = 0; 
-                
-                for(var i=0; i<checkboxes.length; i++){
-                    if(checkboxes[i].checked){
-                        checkedMusic++;
-                    }
-                }
-                
-                if(checkedMusic > 3) {
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'You can only select 3 songs!',
-                            footer: 'Ask an associate for additional help'
-                })
-                        return false;
-                }
-            }
-        
-        </script>
-        
-        
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-        <script src="/static/css/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
-</html>
+            <label class="containers">
+                <input type="checkbox" name={{song.id}}>
+                <span class="checkmark"></span>
+            </label>
+        </div>
+<!-- 
+            <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li> -->
+        {% endfor %}
+    </select>
+    <input class="btn btn-primary my-2" type="submit" value = "View Recommendation Result">
+    </form>
+
+
+  
+    
+ 
+
+
+

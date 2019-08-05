@@ -35,10 +35,12 @@ app = Flask(__name__)
 database.connect()
 #Result form class
 class Song:
-    def __init__(self, id, name, link):
+    def __init__(self, id, name, artist, link, img):
         self.id = id
         self.name  = name
+        self.artist = artist
         self.link = link
+        self.img = img
 
 class Note:
     def __init__(self, id, name, img):
@@ -50,7 +52,7 @@ class Note:
 #Mock dataset of songs
 songs = []
 for i in range(9):
-    song = Song(i, "song_{}".format(i),"https://soundcloud.com/bluewednesday/sink-or-swim-feat-dj-quads")
+    song = Song(i, "song_{}".format(i), "Taylor Swift","https://soundcloud.com/taylorswiftofficial/i-did-something-bad", 'https://i1.sndcdn.com/artworks-NMKb89tCPSQP-0-t500x500.jpg')
     songs.append(song)
 
 
@@ -92,7 +94,16 @@ def hello():
     cur.close()
     '''
     return render_template('songs.html', songs = songs)
+    #return render_template('category.html')
     
+@app.route("/category")
+def category():
+    if request.method == 'GET':
+        return ''
+
+    else:
+        return render_template('category.html')
+
 
 @app.route("/song/<int:id>")
 def song(id):
@@ -105,9 +116,16 @@ def song(id):
 @app.route("/songs", methods = ['POST', 'GET'])
 def select_song():
     if request.method == 'GET':
-        songs = request.args.getlist('songs[]')
-        url = "/notes/{}/{}/{}".format(songs[0],songs[1],songs[2])
+        #songs = request.args.getlist('songs[]')
+        #url = "/notes/{}/{}/{}".format(songs[0],songs[1],songs[2])
+        #return redirect(url)
+        result = []
+        for song in songs:
+            if str(song.id) in request.args:
+                result += [str(song.id)]
+        url = "/notes/{}/{}/{}".format(result[0],result[1],result[2])
         return redirect(url)
+
       
        
     else:
