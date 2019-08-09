@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Album example · Bootstrap</title>
+    <title>Tom Ford Beauty</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -34,7 +34,10 @@
     <link href="album.css" rel="stylesheet">
   </head>
   <body>
-    <header>
+    
+
+
+    <!--<header>
   <div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
       <div class="row">
@@ -64,17 +67,40 @@
       </button>
     </div>
   </div>
-</header>
+</header>-->
+
+<header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white"></h4>
+                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
+                        <span style='font-size:30px;'>&#9835;</span>
+                    </svg>
+                    <strong>TomFord Beauty</strong>
+                </a>
+            </div>
+        </div>
+    </header>
 
 <main role="main">
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Notes</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <h1 class="jumbotron-heading">YOUR NOTES!</h1>
+      <p class="lead text-muted">These are the fragrance notes associated with your song selections.</p>
       <p>
         <a href="/fragrance/{{note1.id}}/{{note2.id}}/{{note3.id}}" class="btn btn-primary my-2">View Recommendation Result</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p>
     </div>
   </section>
@@ -89,11 +115,8 @@
             <div class="card-body">
               <p class="card-text">{{note3.name}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
+                
+               
               </div>
             </div>
           </div>
@@ -104,11 +127,7 @@
             <div class="card-body">
               <p class="card-text">{{note2.name}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
+                
               </div>
             </div>
           </div>
@@ -119,11 +138,7 @@
             <div class="card-body">
               <p class="card-text">{{note1.name}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
+                
               </div>
             </div>
           </div>
@@ -136,15 +151,7 @@
 </main>
 
 
-<footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Back to top</a>
-    </p>
-    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="/docs/4.3/getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/static/css/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
 </html>
