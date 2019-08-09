@@ -65,6 +65,7 @@ note_lst = ['CITRUS',
 'ORIENTAL',
 'TOBACCO',
 'WOODS']
+ 
 notes = []
 notes_dict = {}
 for i, n in enumerate(note_lst):
@@ -137,10 +138,6 @@ def select_song():
       
        
     else:
-        '''
-        #get to the fragrance.
-        return redirect('fragrance')
-        '''
         return render_template("recommendaton.html",fragrance = fragrance)
 
 
@@ -158,7 +155,8 @@ def direct_fragrance(note1,note2,note3):
     base_url = 'https://www.tomford.com/beauty/fragrance/'
     selection = '#prefn1=fragrancenotes&prefn2=productType&prefv1={}%7C{}%7C{}&prefv2=FRAGRANCE'.format(
         notes_dict[note1], notes_dict[note2], notes_dict[note3])
-    return redirect(base_url + selection)
+    #return redirect(base_url + selection)
+    return redirect('https://www.tomford.com/lavender-extreme/T7-LAVENDER.html?cgid=3-555&dwvar_T7-LAVENDER_color=OC#start=2')
 
 
 

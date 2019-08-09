@@ -1,31 +1,50 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-      
-
-    <link rel="stylesheet" type="text/css" href="/static/css/category.css" >
-</head>
-<script src = "static/js/category.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-image:  url(/static/assets/lp_5.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color:lightblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+    <link href="/static/css/category.css" rel="stylesheet" type="text/css" type="text/css" >
+  </head>
+<script src = "/static/js/category.js"></script>
 
 <div class="item">
-        <input type = "button" name = "category" value = "Perfume" onclick="location.href='/perfume';"> </input>
+        <a href='/perfume'> 
         <img width="100" height="100" src= "static/assets/perfume_alt.png">
+      </a>
         Perfume
+
+        
  </div>
+
+
 <div class="item">
-        <input type = "checkbox" name = "category" value = "Cologne" href ="/cologne"> </input>
+        <a href='/cologne'>
         <img width="100" height="100" src= "static/assets/cologne_alt.png">
-       Cologne  </div>
+      </a>
+        
+      <font face="arial" color='white'> Cologne</font> </div>
 
        
             
 
 
           <div class="item">
-                <input type = "button" name = "category" value = "Unisex" href ="/unisex"> </input>
+            <a href='/unisex'>
               <img width="100" height="100" src= "static/assets/unisex_alt.png">
+            </a>
               Unisex
+            
        </div>
 
         </div>

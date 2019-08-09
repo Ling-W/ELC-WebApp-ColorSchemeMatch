@@ -3,6 +3,9 @@ html {
   font-family: "Inter", sans-serif;
 }
 body {
+  background-image: url("/static/assets/lp_1.gif");
+  background-size: cover;
+  background-color:lightblue;
   display: flex;
   align-items: center;
   justify-content: center;
