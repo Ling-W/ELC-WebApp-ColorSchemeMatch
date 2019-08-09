@@ -62,12 +62,13 @@
         </div>
     </header>
     
+
     <main role="main">
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">WELCOME! </h1>
                 <p class="lead text-muted">Select your 3 favorite songs and hit submit for your fragrance recommendations.</p>
-              
+               
             </div>
         </section>
         
@@ -75,31 +76,105 @@
         <head>
                 <link href="/static/css/music-card.css" rel = "stylesheet">
         </head>
-    <form action="/songs" methods = 'GET'>
-    <select name="songs[]" multiple>
+    
 
+        <form action="/songs"  name="songs[]" methods = 'GET'>
+    
         {% for song in songs %}
-        <div class="music-card playing">
-            <div class="image" style="background: url('https://upload.wikimedia.org/wikipedia/en/5/50/Eminem_Rap_God.png')" >
-                </div>
+        <div class="music-card playing" id="main">
+            <div class="image" style="background: url('{{song.img}}')" ></div>
             <div class="wave"></div>
             <div class="wave"></div>
             <div class="wave"></div>
             <div class="info">
                 <h2 class="title">{{ song.name }}</h2>
-                <div class="artist">Eminem</div>
+                <div class="artist">{{ song.artist}}</div>
             </div>
             <label class="containers">
-                <input type="checkbox" name={{song.id}}>
+                <input type="checkbox"  class="musicSelect" name={{song.id}} onclick= "return validateMusicSelection();">
                 <span class="checkmark"></span>
             </label>
         </div>
-<!-- 
-            <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li> -->
+        <!-- <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li> -->
         {% endfor %}
-    </select>
-    <input class="btn btn-primary my-2" type="submit" value = "View Recommendation Result">
-    </form>
+
+    
+     <input class="btn btn-primary my-2" type="submit" value = "View Recommendation Result" onclick="return validateMusicSelectionTwo();">
+ </form>
+
+    
+
+   <!--onclick="return validateMusicSelectionTwo();"-->
+    
+
+</main>
+
+        <script src="sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        
+        
+        <script>
+            function validateMusicSelection(){
+                var checkboxes = document.getElementsByClassName("musicSelect");
+                
+                var checkedMusic = 0; 
+                
+                for(var i=0; i<checkboxes.length; i++){
+                    if(checkboxes[i].checked){
+                        checkedMusic++;
+                    }
+                }
+                
+                if(checkedMusic > 3) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'You can only select 3 songs!',
+                            footer: 'Ask an associate for additional help'
+                })
+                        return false;
+                }
+            }
+            
+            
+            function validateMusicSelectionTwo(){
+                var checkboxes = document.getElementsByClassName("musicSelect").innerHTML;
+                
+                var checkedMusic = 0; 
+                
+                for(var i=0; i<checkboxes.length; i++){
+                    if(checkboxes[i].checked){
+                        checkedMusic++;
+                    }
+                }
+                
+                if(checkedMusic < 3) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'You must select 3 songs!',
+                            footer: 'Ask an associate for additional help'
+                })
+                        return false;
+                }
+            }
+        
+        </script>
+        
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="/static/css/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+
+
+  
+
+   
+
+   
+</html>
 
 
   
