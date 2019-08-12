@@ -6,10 +6,10 @@ from flask import Flask, render_template, request, redirect, url_for
 from peewee import *
 from wtforms import Form, StringField , TextAreaField ,PasswordField , validators
 import logging
-database = MySQLDatabase(os.environ['MYSQL_DATABASE'], 
-                            host=os.environ['MYSQL_HOST'], 
+database = MySQLDatabase(os.environ['MYSQL_DATABASE'],
+                            host=os.environ['MYSQL_HOST'],
                             port=int(os.environ['MYSQL_PORT']),
-                            user=os.environ['MYSQL_USER'], 
+                            user=os.environ['MYSQL_USER'],
                             password=os.environ['MYSQL_PASSWORD'])
 import sys
 # app.config['MYSQL_HOST'] = 'localhost'
@@ -20,15 +20,15 @@ import sys
 # mysql = MySQL(app)
 
 class BaseModel(Model):
-    class Meta:     
+    class Meta:
         database = database
 
 class Table(BaseModel):
     column1 = CharField()
-    column2 = CharField()    
+    column2 = CharField()
     created_at = DateTimeField()
-    updated_at = DateTimeField(null=True)                              
-        
+    updated_at = DateTimeField(null=True)
+
 app = Flask(__name__)
 
 
@@ -68,7 +68,7 @@ songs.append(song2)
 song3 = Song(3, "Truth Hurts", "Lizzo", 'https://s3.amazonaws.com/media.thecrimson.com/photos/2019/05/04/135013_1338000.png')
 songs.append(song3)
 
-song4 = Song(4, "Money in the Grave", "Drake", 'https://pl.scdn.co/images/pl/default/1148f1bad87bb7dfbe8e8d8374a66fd8eac6ed71')
+song4 = Song(4, "Money in the Grave", "Drake", 'https://images.genius.com/a5d3df427e3ff8ebeff7c38a7e3bb329.300x300x1.png')
 songs.append(song4)
 
 song5 = Song(5, "I Don't Care", "Ed Sheeran",'https://upload.wikimedia.org/wikipedia/en/6/69/Ed_Sheeran_%26_Justin_Bieber_-_I_Don%27t_Care.png')
@@ -83,13 +83,13 @@ songs.append(song7)
 song8 = Song(8, "God's Country", "Blake Shelton", 'https://upload.wikimedia.org/wikipedia/en/b/b2/Blake_Shelton_-_God%27s_Country.png')
 songs.append(song8)
 
-song9 = Song(9, "High Hopes", "Panic! At The Disco", 'https://res.cloudinary.com/dx5kjjpce/image/upload/d_default.svg/2788f359d686032eeebbbb4c908ea9f6.jpg')
+song9 = Song(9, "Natrual", "Imagine Dragons", 'https://upload.wikimedia.org/wikipedia/en/1/10/Imagine_Dragons_Natural.png')
 songs.append(song9)
 
 song10 = Song(10, "Happier", "Marshmello", 'https://images.genius.com/4ff9277eed36fb6f90372654b6c9d818.300x300x1.png')
 songs.append(song10)
 
-song11 = Song(11, "Happier", "Marshmello", 'https://images.genius.com/4ff9277eed36fb6f90372654b6c9d818.300x300x1.png')
+song11 = Song(11, "Under Your Scars", "Godsmack", 'https://images.genius.com/6cd7debb969c7222440a560f287c7152.300x300x1.png')
 songs.append(song11)
 
 
@@ -104,11 +104,60 @@ note_lst = ['CITRUS',
 'WOODS']
 notes = []
 notes_dict = {}
-for i, n in enumerate(note_lst):
-    note = Note(i, n,'https://www.google.com/search?q=citrus&source=lnms&tbm=isch&sa=X&ved=0ahUKEwijufrcvtHjAhVkTt8KHR1UC9MQ_AUIESgB&cshid=1564106619008256&biw=1680&bih=939#imgrc=D6mKxRRc4-Rz1M:' )
-    notes.append(note)
-    notes_dict[i] = n
-    
+#for i, n in enumerate(note_lst):
+#    note = Note(i, n,'https://www.google.com/search?q=citrus&source=lnms&tbm=isch&sa=X&ved=0ahUKEwijufrcvtHjAhVkTt8KHR1UC9MQ_AUIESgB&cshid=1564106619008256&biw=1680&bih=939#imgrc=D6mKxRRc4-Rz1M:' )
+#    notes.append(note)
+#    notes_dict[i] = n
+
+note1 = Note(1, 'CITRUS', 'https://blog.williams-sonoma.com/wp-content/uploads/2014/01/CitrusEditorial_v9.jpg')
+notes.append(note1)
+notes_dict[1] = 'CITRUS'
+
+note2 = Note(2, 'FLORAL', 'https://www.elliecashmandesign.com/media/catalog/product/cache/1/image/800x/602f0fa2c1f0d1ba5e241f914e856ff9/d/f/df03100_.jpg')
+notes.append(note2)
+notes_dict[2] = 'FLORAL'
+
+note3 = Note(3, 'FOUGERE', 'https://www.dapperconfidential.com/wp-content/uploads/2017/06/mike-erskine-98419-750x500.jpg')
+notes.append(note3)
+notes_dict[3] = 'FOUGERE'
+
+note4 = Note(4, 'GREEN', 'https://mz-static.imgix.net/redactor/pictures/8112/Green-Term-Deposit_original.jpg?w=660&fm=jpg&q=70')
+notes.append(note4)
+notes_dict[4] = 'GREEN'
+
+note5 = Note(5, 'LEATHER', 'http://www.chalk29.com/wp-content/uploads/2015/12/leather-1080x720.jpg')
+notes.append(note5)
+notes_dict[5] = 'LEATHER'
+
+note6 = Note(6, 'ORIENTAL', 'https://100degreeperfumes.com/wp-content/uploads/2019/04/orientalfragrance.jpg')
+notes.append(note6)
+notes_dict[6] = 'ORIENTAL'
+
+note7 = Note(7, 'TOBACCO', 'https://countryclubformen.com/wp-content/uploads/2018/08/tobacco.jpg')
+notes.append(note7)
+notes_dict[7] = 'TOBACCO'
+
+note8 = Note(8, 'WOODS', 'https://f4.bcbits.com/img/a4170709666_10.jpg')
+notes.append(note8)
+notes_dict[8] = 'WOODS'
+
+#REPEAT THESE NOTES FOR THE OTHER SONGS
+note9 = Note(9, 'FLORAL', 'https://www.elliecashmandesign.com/media/catalog/product/cache/1/image/800x/602f0fa2c1f0d1ba5e241f914e856ff9/d/f/df03100_.jpg')
+notes.append(note9)
+notes_dict[9] = 'FLORAL'
+
+note10 = Note(10, 'FOUGERE', 'https://www.dapperconfidential.com/wp-content/uploads/2017/06/mike-erskine-98419-750x500.jpg')
+notes.append(note10)
+notes_dict[10] = 'FOUGERE'
+
+note11 = Note(11, 'GREEN', 'https://mz-static.imgix.net/redactor/pictures/8112/Green-Term-Deposit_original.jpg?w=660&fm=jpg&q=70')
+notes.append(note11)
+notes_dict[11] = 'GREEN'
+
+note12 = Note(12, 'LEATHER', 'http://www.chalk29.com/wp-content/uploads/2015/12/leather-1080x720.jpg')
+notes.append(note12)
+notes_dict[12] = 'LEATHER'
+
 genre = ['Country','Jazz','Ambient', 'Acoustic', 'Disco','Hip-hop', 'rap','Heavy Metal', 'Classical']
 genre = dict(enumerate(genre))
 
@@ -130,23 +179,31 @@ fragrance = {}
 
 #add fragrance
 #0 perfume, 1 cologne, 2 unisex
+
+#Perfume
 fragrance[0] = Fragrance(0, 0,'Black Orchid', 'https://www.tomford.com/black-orchid/T0-BLACK-ORCHID.html')
+
+#Cologne
+fragrance[1] = Fragrance(1, 1, 'Tom Ford For Men', 'https://www.tomford.com/tom-ford-for-men/T03-TOMFORD-FORMEN.html')
+
+#unisex
+fragrance[2] = Fragrance(2, 2, 'Oud Wood', 'https://www.tomford.com/oud-wood/T1-OUD-WOOD.html')
 #TODO: Add all the fragrances here
 
 category = 0
 @app.route("/")
 def hello():
-    
+
     #return render_template('songs.html', songs = songs)
     return render_template('category.html')
-    
+
 @app.route("/category")
 def category():
     return render_template('category.html')
 
 @app.route("/perfume")
 def perfume():
-    global category 
+    global category
     category = 0
     return render_template('songs.html', songs = songs)
 
@@ -172,10 +229,10 @@ def select_song():
         print(result[0])
         print(result[1])
         print(result[2])
-        return redirect(url)       
+        return redirect(url)
 
-      
-       
+
+
     else:
         '''
         #get to the fragrance.
@@ -205,5 +262,5 @@ def direct_fragrance(note1,note2,note3):
 
 
 if __name__ == '__main__':
-    with database: database.create_tables([Table]) 
+    with database: database.create_tables([Table])
     app.run(host='0.0.0.0', port=9999, debug = True)

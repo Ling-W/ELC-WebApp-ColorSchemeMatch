@@ -1,8 +1,9 @@
 @import 'https://fonts.googleapis.com/css?family=Reem+Kufi';
 @import 'https://fonts.googleapis.com/css?family=Pacifico&display=swap';
-    
+
 @import url('https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css');
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 body {
   background: #8e9eab;
@@ -27,15 +28,15 @@ body {
     display:inline-block;
   flex-wrap: wrap;
   flex: auto;
-  margin: 25px 25px; 
-  transition: width 1s, height 1s; 
+  margin: 25px 25px;
+  transition: width 1s, height 1s;
 }
 
 .music-card:hover{
     width: 310px;
     height: 500px;
     z-index: auto;
-    
+
 }
 
 .button{
@@ -43,8 +44,8 @@ body {
     bottom: 0%;
     left: 20%;
     right:20%;
-    
-    
+
+
 }
 
 
@@ -53,15 +54,15 @@ body {
   background-size: cover;
   position: absolute;
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.6;
   height: 300px;
   width: 300px;
-  transition: width 1s height 1s; 
+  transition: width 1s height 1s;
 }
 
 .image:hover{
     width: 310px;
-    height: 301px; 
+    height: 301px;
 }
 
 
@@ -74,7 +75,7 @@ body {
   width: 100%;
   z-index: 1;
   background: linear-gradient(rgba(9, 2, 4, 0), #444);
-  
+
 }
 
 .wave {
@@ -135,14 +136,16 @@ body {
     /*color: #FFD700;*/
   margin-bottom: 8px;
   text-transform: uppercase;
-  font-family: 'Reem Kufi';
+  font-family: 'Montserrat', sans-serif;
+  /*'Reem Kufi';*/
 }
 
 .artist {
   color: #cfcfcf;
   font-size: 1.2em;
   letter-spacing: 0.08em;
-  font-family: 'Reem Kufi', sans-serif;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
 }
 .fa {
   position: absolute;
@@ -174,7 +177,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: width 2s, height 2s; 
+  transition: width 2s, height 2s;
 }
 
 /* Hide the browser's default checkbox */
@@ -200,7 +203,7 @@ body {
 .containers:hover input ~ .checkmark {
   background-color: #ccc;
   height: 30px;
-  width: 30px; 
+  width: 30px;
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -234,4 +237,3 @@ body {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-
