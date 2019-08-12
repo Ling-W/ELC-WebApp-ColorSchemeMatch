@@ -137,7 +137,7 @@ fragrance = {}
 fragrance[0] = Fragrance(0,2,'SOLEIL BLANC ATOMIZER', 'https://www.tomford.com/soleil-blanc-atomizer/T6K7.html?cgid=3-555&dwvar_T6K7_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=12')
 fragrance[1] = Fragrance(1,1,'Tom Ford for Men','https://www.tomford.com/tom-ford-for-men/T03-TOMFORD-FORMEN.html?cgid=3-555&dwvar_T03-TOMFORD-FORMEN_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=17')
 fragrance[2] = Fragrance(2,0, 'Orchid Soleil','https://www.tomford.com/orchid-soleil/T47Y-ORCHID-SOLEIL.html?dwvar_T47Y-ORCHID-SOLEIL_color=OC&cgid=3-555#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=1')
-fragrance[3] = Fragrance(3,1,'TOM FORD NOIR POUR FEMME','https://www.tomford.com/tom-ford-noir-pour-femme/T2RY.html?cgid=3-555&dwvar_T2RY_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=1')
+#fragrance[3] = Fragrance(3,1,'TOM FORD NOIR POUR FEMME','https://www.tomford.com/tom-ford-noir-pour-femme/T2RY.html?cgid=3-555&dwvar_T2RY_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=1')
 
 category = 0
 @app.route("/")
@@ -207,15 +207,11 @@ def get_notes(song1,song2,song3):
 
 @app.route("/fragrance/<int:note1>/<int:note2>/<int:note3>")
 def direct_fragrance(note1,note2,note3):
-    # base_url = 'https://www.tomford.com/beauty/fragrance/'
-    # selection = '#prefn1=fragrancenotes&prefn2=productType&prefv1={}%7C{}%7C{}&prefv2=FRAGRANCE'.format(
-    #     notes_dict[note1], notes_dict[note2], notes_dict[note3])
-    # #return redirect(base_url + selection)
+
     res = []
     for f in fragrance.values():
         if f.category == category:
             res.append(f)
-    
     return redirect(res[0].link)
 
 
