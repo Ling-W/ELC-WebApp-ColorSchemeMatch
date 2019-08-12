@@ -13,6 +13,44 @@
         justify-content: center;
         height: 100vh;
       }
+        .snake {
+    position: absolute;
+    transition: transform 500ms;
+    width: 100%;
+    transform: translateY(-50%);
+    top: 86%;
+  }
+  .snake path {
+    fill: none;
+    stroke: black;
+    stroke-dasharray: 29 100;
+    stroke-width: 1.5px;
+  }
+  .pos1 .snake {
+    transform: translateX(33.33%) translateY(-50%);
+  }
+  .pos2 .snake {
+    transform: translateX(66.67%) translateY(-50%);
+  }
+  .left .snake path {
+    stroke-dashoffset: 0;
+    transform: translateX(0);
+    transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+  }
+  .right .snake path {
+    stroke-dashoffset: -70px;
+    transform: translateX(-60%);
+    transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+  }
+  .instant .snake path {
+    transition: none;
+  }
+  .menu {
+    display: flex;
+    height: 100px;
+    left: 9px;
+    position: relative;
+  }
     </style>
     <link href="/static/css/category.css" rel="stylesheet" type="text/css" type="text/css" >
   </head>
@@ -49,3 +87,5 @@
 
         </div>
       </div>
+
+    </html>

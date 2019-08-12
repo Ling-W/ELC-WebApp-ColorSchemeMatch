@@ -49,6 +49,9 @@ class Note:
         self.img = img
 
 
+
+
+
 #Mock dataset of songs
 songs = []
 #for i in range(15):
@@ -68,7 +71,7 @@ songs.append(song2)
 song3 = Song(3, "Truth Hurts", "Lizzo", 'https://s3.amazonaws.com/media.thecrimson.com/photos/2019/05/04/135013_1338000.png')
 songs.append(song3)
 
-song4 = Song(4, "Money in the Grave", "Drake", 'https://pl.scdn.co/images/pl/default/1148f1bad87bb7dfbe8e8d8374a66fd8eac6ed71')
+song4 = Song(4, "Monkey in the Grave", "Drake", 'https://i.ytimg.com/vi/gK2JZvtU-xE/hqdefault.jpg')
 songs.append(song4)
 
 song5 = Song(5, "I Don't Care", "Ed Sheeran",'https://upload.wikimedia.org/wikipedia/en/6/69/Ed_Sheeran_%26_Justin_Bieber_-_I_Don%27t_Care.png')
@@ -89,7 +92,7 @@ songs.append(song9)
 song10 = Song(10, "Happier", "Marshmello", 'https://images.genius.com/4ff9277eed36fb6f90372654b6c9d818.300x300x1.png')
 songs.append(song10)
 
-song11 = Song(11, "Happier", "Marshmello", 'https://images.genius.com/4ff9277eed36fb6f90372654b6c9d818.300x300x1.png')
+song11 = Song(11, "I Did Something Bad", "Taylor Swift", 'https://glhsreflection.org/wp-content/uploads/2017/11/REPUTATIONCOVER-300x300.jpg')
 songs.append(song11)
 
 
@@ -131,8 +134,10 @@ fragrance = {}
 
 #add fragrance
 #0 perfume, 1 cologne, 2 unisex
-fragrance[0] = Fragrance(0, 0,'Black Orchid', 'https://www.tomford.com/black-orchid/T0-BLACK-ORCHID.html')
-#TODO: Add all the fragrances here
+fragrance[0] = Fragrance(0,2,'SOLEIL BLANC ATOMIZER', 'https://www.tomford.com/soleil-blanc-atomizer/T6K7.html?cgid=3-555&dwvar_T6K7_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=12')
+fragrance[1] = Fragrance(1,1,'Tom Ford for Men','https://www.tomford.com/tom-ford-for-men/T03-TOMFORD-FORMEN.html?cgid=3-555&dwvar_T03-TOMFORD-FORMEN_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=17')
+fragrance[2] = Fragrance(2,0, 'Orchid Soleil','https://www.tomford.com/orchid-soleil/T47Y-ORCHID-SOLEIL.html?dwvar_T47Y-ORCHID-SOLEIL_color=OC&cgid=3-555#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=1')
+fragrance[3] = Fragrance(3,1,'TOM FORD NOIR POUR FEMME','https://www.tomford.com/tom-ford-noir-pour-femme/T2RY.html?cgid=3-555&dwvar_T2RY_color=OC#prefn1=productType&srule=Price+-+Ascending&prefv1=FRAGRANCE&gclid=Cj0KCQjws7TqBRDgARIsAAHLHP5GIIeAca0JIzG-Y1TQoGaWy8Rpinw8ovD57BOrIX6ncXu_8m3OVm4aAiaYEALw_wcB&gclsrc=aw.ds&start=1')
 
 category = 0
 @app.route("/")
@@ -150,6 +155,19 @@ def perfume():
     global category 
     category = 0
     return render_template('songs.html', songs = songs)
+
+@app.route("/cologne")
+def cologne():
+    global category
+    category = 1
+    return render_template('songs.html', songs = songs)
+
+@app.route("/unisex")
+def unisex():
+    global category
+    category = 2
+    return render_template('songs.html', songs = songs)
+    
 
 @app.route("/song/<int:id>")
 def song(id):
@@ -170,9 +188,6 @@ def select_song():
             if str(song.id) in request.args:
                 result += [str(song.id)]
         url = "/notes/{}/{}/{}".format(result[0],result[1],result[2])
-        print(result[0])
-        print(result[1])
-        print(result[2])
         return redirect(url)       
 
       
@@ -192,11 +207,16 @@ def get_notes(song1,song2,song3):
 
 @app.route("/fragrance/<int:note1>/<int:note2>/<int:note3>")
 def direct_fragrance(note1,note2,note3):
-    base_url = 'https://www.tomford.com/beauty/fragrance/'
-    selection = '#prefn1=fragrancenotes&prefn2=productType&prefv1={}%7C{}%7C{}&prefv2=FRAGRANCE'.format(
-        notes_dict[note1], notes_dict[note2], notes_dict[note3])
-    #return redirect(base_url + selection)
-    return redirect('https://www.tomford.com/lavender-extreme/T7-LAVENDER.html?cgid=3-555&dwvar_T7-LAVENDER_color=OC#start=2')
+    # base_url = 'https://www.tomford.com/beauty/fragrance/'
+    # selection = '#prefn1=fragrancenotes&prefn2=productType&prefv1={}%7C{}%7C{}&prefv2=FRAGRANCE'.format(
+    #     notes_dict[note1], notes_dict[note2], notes_dict[note3])
+    # #return redirect(base_url + selection)
+    res = []
+    for f in fragrance.values():
+        if f.category == category:
+            res.append(f)
+    
+    return redirect(res[0].link)
 
 
 
