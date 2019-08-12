@@ -6,14 +6,16 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v3.8.5">
-        
+
         <title>Tom Ford Beauty</title>
-        
+
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-        
- 
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -23,13 +25,13 @@
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
         }
-    
+
     </style>
   <link href="album.css" rel="stylesheet">
 
@@ -44,51 +46,50 @@
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white"></h4>
-                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false">
                         <span style='font-size:30px;'>&#9835;</span>
                     </svg>
-                    <strong>TomFord Beauty</strong>
+                    <strong style="font-family: 'Montserrat', sans-serif;'">Tom Ford Beauty</strong>
                 </a>
             </div>
         </div>
     </header>
-    
+
 
     <main role="main">
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">WELCOME! </h1>
-                <p class="lead text-muted">Select your 3 favorite songs and hit submit for your fragrance recommendations.</p>
-               
+                <h1 class="jumbotron-heading" style="font-family: 'Montserrat', sans-serif;'">WELCOME! </h1>
+                <p class="lead text-muted" style="font-family: 'Montserrat', sans-serif;'"> Select your 3 favorite songs and hit submit for your fragrance recommendation.</p>
+
             </div>
         </section>
-        
-     
+
+
         <head>
                 <link href="/static/css/music-card.css" rel = "stylesheet">
         </head>
-    
+
 
         <form action="/songs"  name="songs[]" methods = 'GET'>
-    
+
         {% for song in songs %}
-        <div class="music-card playing" id="main">
-            <div class="image" style="background: url('{{song.img}}')" ></div>
+        <div class="music-card playing" id="main" style ="justify-content: center; align-items: center;">
+            <div class="image" style="background: url('{{song.img}}'); opacity: 0.7;"></div>
             <div class="wave"></div>
             <div class="wave"></div>
             <div class="wave"></div>
             <div class="info">
-                <h2 class="title">{{ song.name }}</h2>
-                <div class="artist">{{ song.artist}}</div>
+                <h2 class="title" style="font-family: 'Montserrat', sans-serif;'">{{ song.name }}</h2>
+                <div class="artist" style="font-family: 'Montserrat', sans-serif;'">{{ song.artist}}</div>
             </div>
             <label class="containers">
                 <input type="checkbox"  class="musicSelect" name={{song.id}} onclick= "return validateMusicSelection();">
@@ -98,34 +99,40 @@
         <!-- <option type = "checkbox" value={{song.id}} ><a href="song/{{song.id}}">{{song.name}}</a></li> -->
         {% endfor %}
 
-    
-     <input class="btn btn-primary my-2" type="submit" value = "View Recommendation Result" onclick="return validateMusicSelectionTwo();">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <p>
+            <input class="btn btn-primary my-2" style="font-family: 'Montserrat', sans-serif;'"  type="submit" value = "View Recommendation Result" onclick="return validateMusicSelectionTwo();">
+          </p>
+        </div>
+      </section>
+
  </form>
 
-    
+
 
    <!--onclick="return validateMusicSelectionTwo();"-->
-    
+
 
 </main>
 
         <script src="sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        
-        
+
+
         <script>
             function validateMusicSelection(){
                 var checkboxes = document.getElementsByClassName("musicSelect");
-                
-                var checkedMusic = 0; 
-                
+
+                var checkedMusic = 0;
+
                 for(var i=0; i<checkboxes.length; i++){
                     if(checkboxes[i].checked){
                         checkedMusic++;
                     }
                 }
-                
+
                 if(checkedMusic > 3) {
                         Swal.fire({
                             type: 'error',
@@ -136,19 +143,19 @@
                         return false;
                 }
             }
-            
-            
+
+
             function validateMusicSelectionTwo(){
-                var checkboxes = document.getElementsByClassName("musicSelect").innerHTML;
-                
-                var checkedMusic = 0; 
-                
+                var checkboxes = document.getElementsByClassName("musicSelect");
+
+                var checkedMusic = 0;
+
                 for(var i=0; i<checkboxes.length; i++){
                     if(checkboxes[i].checked){
                         checkedMusic++;
                     }
                 }
-                
+
                 if(checkedMusic < 3) {
                         Swal.fire({
                             type: 'error',
@@ -159,27 +166,19 @@
                         return false;
                 }
             }
-        
+
         </script>
-        
-        
-        
+
+
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
         <script src="/static/css/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
 
 
-  
 
-   
 
-   
+
+
+
 </html>
-
-
-  
-    
- 
-
-
-
