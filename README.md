@@ -1,11 +1,5 @@
 ## Pyhton, MySQL and phpMyAdmin
+## THIS PROJECT IS DE BEST
 
-Docker running Python, MySQL and phpMyAdmin.
-
-```
-docker-compose build
-```
-
-```
-docker-compose up -d
-```
+STEP 1
+WIN
